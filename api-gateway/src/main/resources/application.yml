@@ -1,0 +1,28 @@
+server:
+  port: 8090
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: api_route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/**
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        cloud:
+#          gateway: trace
+
+dubbo:
+  application:
+    name: api-interface-consumer
+    qos-port: 33333
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://121.37.161.208:8848
+    id: dubbo
